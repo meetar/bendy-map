@@ -1,4 +1,4 @@
-﻿# Author @patriciogv - 2015
+﻿# by @meetar based on tilt-gotham by @patriciogv - 2015
 
 cameras:
     perspective:
@@ -18,7 +18,7 @@ styles:
         shaders:
             uniforms:
                 u_t: 1.
-                u_u: -1.4
+                u_u: 3.68
                 u_v: .001
                 u_yoffset: -800.
                 u_zoffset: 0.
@@ -43,7 +43,7 @@ styles:
                     float t = 1.;
                     float u = 0.;
                     // position.xyz = rotateX3D(abs(cos(t))) * rotateZ3D(abs(sin(t))*.5) * position.xyz;
-                    vec3 new = rotateX3D(cos(u_t)) * rotateZ3D(sin(u_u)*.5) * position.xyz;
+                    vec3 new = rotateX3D(cos(u_t)) * rotateZ3D(sin(u_u)) * position.xyz;
                     position.xyz = new.xyz;
                     position.xyz = vec3(new.x, position.y - u_yoffset, new.z*position.y*-1.*u_v - u_zoffset);
    
