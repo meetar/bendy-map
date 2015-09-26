@@ -36,9 +36,9 @@ map = (function () {
         attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | &copy; OSM contributors | <a href="https://mapzen.com/" target="_blank">Mapzen</a>',
         unloadInvisibleTiles: false,
         updateWhenIdle: false,
-        zoomControl: false,
-        minZoom: 14.5,
-        maxZoom: 14.5
+        // zoomControl: false,
+        minZoom: 13.3,
+        // maxZoom: 14.5
     });
 
     window.layer = layer;
