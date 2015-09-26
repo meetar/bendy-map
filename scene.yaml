@@ -141,12 +141,6 @@ layers:
             roads:
                 order: 0
                 color: '#555'
-    # landuse:
-    #     data: { source: osm }
-    #     draw:
-    #         tilt:
-    #             order: 1
-    #             color: '#666'
     roads:
         data: { source: osm }
         filter: { not: { highway: service, kind: rail } }
@@ -158,9 +152,8 @@ layers:
                 width: 15
     buildings:
         data: { source: osm }
-        filter: { $zoom: { min: 10 } }
         draw:
             tilt:
                 order: 5
                 color: white
-                extrude: function () { return feature.height > 0 || $zoom >= 16; }
+                extrude: true
