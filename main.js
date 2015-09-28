@@ -37,7 +37,7 @@ map = (function () {
         unloadInvisibleTiles: false,
         updateWhenIdle: false,
         // zoomControl: false,
-        minZoom: 13.3,
+        // minZoom: 13.3,
         // maxZoom: 14.5
     });
 
