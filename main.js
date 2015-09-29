@@ -6,7 +6,7 @@ map = (function () {
 
     var locations = {
         'Oakland': [37.8044, -122.2708, 15],
-        'New York': [40.7185, -74.0013, 14],
+        'New York': [40.7238, -73.9881, 14],
         'Seattle': [47.5937, -122.3215, 15]
     };
 
@@ -36,9 +36,6 @@ map = (function () {
         attribution: '<a href="https://mapzen.com/tangram" target="_blank">Tangram</a> | &copy; OSM contributors | <a href="https://mapzen.com/" target="_blank">Mapzen</a>',
         unloadInvisibleTiles: false,
         updateWhenIdle: false,
-        // zoomControl: false,
-        // minZoom: 13.3,
-        // maxZoom: 14.5
     });
 
     window.layer = layer;

@@ -3,30 +3,28 @@
 cameras:
     perspective:
         type: perspective
-        fov: 55.
 lights:
-    # directional1:
-    #     type: directional
-    #     direction: [-1.,-1.,-0.5]
-    #     ambient: [0.384, 0.384, 0.384]
-    #     diffuse: [0.945, 0.945, 0.945]
+    directional1:
+        type: directional
+        direction: [-1.,-.5.,-0.5]
+        ambient: [.3, .3, .7]
+        diffuse: [1, 1, .1]
     point1:
         type: point
-        position: [0, -4000, 2000]
+        position: [1000, -4000, 3000]
         origin: ground
-        ambient: [0.384, 0.384, 0.384]
-        diffuse: [0.620, 0.620, 0.620]
+        diffuse: 1
+scene:
+    background:
+        color: '#333'
 styles:
     tilt:
-        animated: true
         base: polygons
         shaders:
             uniforms:
-                u_t: 1.
-                u_u: 3.68
-                u_v: .001
-                u_yoffset: -800.
-                u_zoffset: 0.
+                u_bend: 1.3
+                u_rotate: .51
+                u_yoffset: -100.
             blocks:
                 global: |
                     mat3 rotateX3D(float phi){
@@ -43,40 +41,36 @@ styles:
                             vec3(0.,0.,1.)
                             );
                     }
-                color: color = vec4(1.);
+                color: |
+                    color.rgb *= vec3(min((v_world_position.z*.0005 + .65),1.));
                 position: |
                     float meter_pixels = u_meters_per_pixel / u_device_pixel_ratio;
                     vec2 rez = u_resolution * meter_pixels;
-                    vec2 center = u_map_position.xy;
-                    float y_range = (rez.y / 2.); 
-                    float top = center.y + y_range;
-                    float bottom = center.y - y_range;
 
                     // twist map in z (manhattan angle happens to be almost exactly half a radian)
-                    position.xyz *= rotateZ3D(.5);
+                    position.xyz *= rotateZ3D(u_rotate);
 
-                    // rotate map in x to flat, edge-on
-                    vec3 new = rotateX3D(1.3) * position.xyz;
-                    // new.y += 300.;
-                    // new.z -= 1000.;
+                    // rotate map in x so it's nearly flat
+                    vec3 new = rotateX3D(u_bend) * position.xyz;
+
+                    // adjust height
+                    new.y += u_yoffset;
                      
-                    // mix between vertical and horizontal maps, depending on y
-                    // position.xyz = mix(position.xyz, new.xyz, (position.y - bottom) / u_resolution.y);
+                    // mix between vertical and horizontal maps, based on position.y
                     position.xyz = mix(position.xyz, new.xyz, (-position.y + rez.y/2.)/rez.y);
                     
-
-   
     roads:
         animated: false
         texcoords: true
         base: lines
         mix: tilt
+
 sources:
     osm:
         type: TopoJSON
         url:  //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-_vxMzew
 layers:
-    water:
+    boundaries:
         data: { source: osm }
         draw:
             roads:
@@ -97,12 +91,11 @@ layers:
         draw:
             roads:
                 order: 3
-                color: lightblue
+                color: [1, .95, .8]
                 width: 15
     buildings:
         data: { source: osm }
         draw:
             tilt:
                 order: 5
-                color: white
                 extrude: true
