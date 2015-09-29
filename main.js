@@ -47,11 +47,26 @@ map = (function () {
 
     var hash = new L.Hash(map);
 
+    // Create dat GUI
+    var gui = new dat.GUI({ autoPlace: true, hideable: false, width: 300 });
+    function addGUI () {
+        gui.domElement.parentNode.style.zIndex = 5; // make sure GUI is on top of map
+        window.gui = gui;
+        gui.rotate = .51;
+        gui.add(gui, 'rotate', 0., 6.28).name("&nbsp;&nbsp;rotate").onChange(function(value) {
+            scene.styles.tilt.shaders.uniforms.u_rotate = value;
+            scene.styles.roads.shaders.uniforms.u_rotate = value;
+            scene.requestRedraw();
+        });
+
+    }
+
     /***** Render loop *****/
 
     window.addEventListener('load', function () {
         // Scene initialized
         layer.on('init', function() {
+            addGUI();
         });
         layer.addTo(map);
     });
