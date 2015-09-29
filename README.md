@@ -1,6 +1,6 @@
 # bendy-map
 
-A map made with [Tangram](http://github.com/tangrams/tangram).
+A horizonless map made with [Tangram](http://github.com/tangrams/tangram), in the spirit of [Inception](http://www.imdb.com/title/tt1375666/) and the BERG [Here&There](http://berglondon.com/products/hat/) map.
 
 Live demo: http://meetar.github.io/bendy-map
 
