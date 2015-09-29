@@ -53,7 +53,7 @@ map = (function () {
         gui.domElement.parentNode.style.zIndex = 5; // make sure GUI is on top of map
         window.gui = gui;
         gui.rotate = .51;
-        gui.add(gui, 'rotate', 0., 6.28).name("&nbsp;&nbsp;rotate").onChange(function(value) {
+        gui.add(gui, 'rotate', 0., Math.PI/180*360).name("&nbsp;&nbsp;rotate").onChange(function(value) {
             scene.styles.tilt.shaders.uniforms.u_rotate = value;
             scene.styles.roads.shaders.uniforms.u_rotate = value;
             scene.requestRedraw();
