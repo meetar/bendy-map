@@ -4,7 +4,7 @@ A horizonless map made with [Tangram](http://github.com/tangrams/tangram), in th
 
 Live demo: http://meetar.github.io/bendy-map
 
-![manhattan](https://cloud.githubusercontent.com/assets/459970/10154019/623dfd6c-6630-11e5-8699-0cbbc653480f.jpg)
+![manhattan](https://cloud.githubusercontent.com/assets/459970/10175431/c39d9b4e-66bc-11e5-9792-584caad671db.jpg)
 
 
 ### To run locally:
