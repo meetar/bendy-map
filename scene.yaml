@@ -24,7 +24,7 @@ styles:
             uniforms:
                 u_bend: 1.3
                 u_rotate: .51
-                u_yoffset: -100.
+                u_yoffset: 100.
 
                 u_frequency: 5.
                 u_windowColor: [1., 1., .9]
@@ -33,6 +33,7 @@ styles:
 
             blocks:
                 global: |
+                    // rotation matrix operations
                     mat3 rotateX3D(float phi){
                         return mat3(
                             vec3(1.,0.,0.),
@@ -49,6 +50,7 @@ styles:
                     }
 
                 color: |
+                    // windows shader
                     color.rgb *= vec3(min((v_world_position.z*.0005 + .65),1.));
 
                     vec3 vPos = v_world_position.xyz / u_frequency;
@@ -76,7 +78,7 @@ styles:
                     vec3 new = rotateX3D(u_bend) * position.xyz;
 
                     // adjust height
-                    new.y += u_yoffset;
+                    new.y -= u_yoffset;
                      
                     // mix between vertical and horizontal maps, based on position.y
                     position.xyz = mix(position.xyz, new.xyz, (-position.y + rez.y/2.)/rez.y);

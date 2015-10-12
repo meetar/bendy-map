@@ -58,6 +58,12 @@ map = (function () {
             scene.styles.roads.shaders.uniforms.u_rotate = value;
             scene.requestRedraw();
         });
+        gui.height = 100;
+        gui.add(gui, 'height', -500., 500).name("&nbsp;&nbsp;height").onChange(function(value) {
+            scene.styles.tilt.shaders.uniforms.u_yoffset = value;
+            scene.styles.roads.shaders.uniforms.u_yoffset = value;
+            scene.requestRedraw();
+        });
 
     }
 
