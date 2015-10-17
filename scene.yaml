@@ -94,7 +94,7 @@ styles:
         shaders:
             blocks:
                 color: |
-                    color.rgb = mix(vec3(0.), vec3(.3), (v_position.y+u_resolution.y)/u_resolution.y/2.);
+                    color.rgb = mix(vec3(0.), vec3(.2), ((gl_FragCoord.y+u_resolution.y/2.)-u_resolution.y*.9)/u_resolution.y*4.);
 
 
 sources:
