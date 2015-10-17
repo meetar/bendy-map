@@ -30,6 +30,14 @@ map = (function () {
         {"keyboardZoomOffset" : .05}
     );
 
+    var url_search = window.location.search.slice(1);
+    if (url_search.length > 0) {
+        if (url_search.lastIndexOf('noscroll') > -1) {
+            map.scrollWheelZoom.disable();
+            map.touchZoom.disable();
+        }
+    }
+    
     var layer = Tangram.leafletLayer({
         scene: 'scene.yaml',
         numWorkers: 2,
