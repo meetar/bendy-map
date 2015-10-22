@@ -49,7 +49,7 @@ map = (function () {
     var hash = new L.Hash(map);
 
     // Create dat GUI
-    var gui = new dat.GUI({ autoPlace: true, hideable: false, width: 300 });
+    var gui;
     function addGUI () {
         gui.domElement.parentNode.style.zIndex = 5; // make sure GUI is on top of map
         window.gui = gui;
@@ -72,18 +72,19 @@ map = (function () {
 
     window.addEventListener('load', function () {
         // Scene initialized
+        var url_search = window.location.search.slice(1);
+        var noscroll = false;
+        if (url_search.length > 0) {
+            if (url_search.lastIndexOf('noscroll') > -1) noscroll = true;
+        }
         layer.on('init', function() {
-            addGUI();
-    
+            if (!noscroll) {
+                gui = new dat.GUI({ autoPlace: true, hideable: false, width: 300 });
+                addGUI();
+            }
         });
         layer.addTo(map);
-            var url_search = window.location.search.slice(1);
-            if (url_search.length > 0) {
-                if (url_search.lastIndexOf('noscroll') > -1) {
-                    console.log('noscroll');
-                    map.scrollWheelZoom.disable();
-                }
-            }
+        if (noscroll) map.scrollWheelZoom.disable();
     });
 
     return map;
