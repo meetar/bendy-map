@@ -51,9 +51,9 @@ styles:
 
                 color: |
                     // windows shader
-                    color.rgb *= vec3(min((v_world_position.z*.0005 + .65),1.));
+                    color.rgb *= vec3(min((worldPosition().z*.0005 + .65),1.));
 
-                    vec3 vPos = v_world_position.xyz / u_frequency;
+                    vec3 vPos = worldPosition().xyz / u_frequency;
                     vec3 mask = mix(vec3(0.0), vec3(1.0), step(fract(mod(vPos, .9)), vec3(.4, .4, .6)));
 
                     if (mask.x + mask.y + mask.z > .5) {
