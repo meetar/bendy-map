@@ -100,7 +100,9 @@ styles:
 sources:
     osm:
         type: TopoJSON
-        url:  //vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-_vxMzew
+        url:  https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-_vxMzew
+        max_zoom: 16
+
 layers:
     boundaries:
         data: { source: osm }
