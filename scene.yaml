@@ -127,7 +127,6 @@ layers:
     roads:
         data: { source: osm }
         filter: { not: { highway: service, kind: rail } }
-        properties: { width: 3 }
         draw:
             roads:
                 order: function() { return feature.sort_key; }
