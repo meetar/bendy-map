@@ -100,7 +100,7 @@ styles:
 sources:
     osm:
         type: TopoJSON
-        url:  https://vector.mapzen.com/osm/all/{z}/{x}/{y}.topojson?api_key=vector-tiles-_vxMzew
+        url: //tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson?api_key=mapzen-QF1osLn?api_key=vector-tiles-_vxMzew
         max_zoom: 16
 
 layers:
@@ -108,33 +108,33 @@ layers:
         data: { source: osm }
         draw:
             roads:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 width: 3px
-                color: #353535
+                color: '#353535'
 
     water:
         data: { source: osm }
         draw:
             flat:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 color: '#222'
     earth:
         data: { source: osm }
         draw:
             flat:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 color: '#222'
     roads:
         data: { source: osm }
         filter: { not: { highway: service, kind: rail } }
         draw:
             roads:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 color: [1, .95, .8]
                 width: 15
     buildings:
         data: { source: osm }
         draw:
             tilt:
-                order: function() { return feature.sort_key; }
+                order: function() { return feature.sort_rank; }
                 extrude: true
