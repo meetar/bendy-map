@@ -126,7 +126,7 @@ layers:
                 color: '#222'
     roads:
         data: { source: osm }
-        filter: { not: { highway: service, kind: rail } }
+        filter: { not: { kind_detail: service, kind: rail } }
         draw:
             roads:
                 order: function() { return feature.sort_rank; }
