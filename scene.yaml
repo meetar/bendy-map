@@ -98,7 +98,7 @@ styles:
 
 
 sources:
-    osm:
+    mapzen:
         type: TopoJSON
         url: https://tile.mapzen.com/mapzen/vector/v1/all/{z}/{x}/{y}.topojson
         url_params:
@@ -107,7 +107,7 @@ sources:
 
 layers:
     boundaries:
-        data: { source: osm }
+        data: { source: mapzen }
         draw:
             roads:
                 order: function() { return feature.sort_rank; }
@@ -115,19 +115,19 @@ layers:
                 color: '#353535'
 
     water:
-        data: { source: osm }
+        data: { source: mapzen }
         draw:
             flat:
                 order: function() { return feature.sort_rank; }
                 color: '#222'
     earth:
-        data: { source: osm }
+        data: { source: mapzen }
         draw:
             flat:
                 order: function() { return feature.sort_rank; }
                 color: '#222'
     roads:
-        data: { source: osm }
+        data: { source: mapzen }
         filter: { not: { kind_detail: service, kind: rail } }
         draw:
             roads:
@@ -135,7 +135,7 @@ layers:
                 color: [1, .95, .8]
                 width: 15
     buildings:
-        data: { source: osm }
+        data: { source: mapzen }
         draw:
             tilt:
                 order: function() { return feature.sort_rank; }
