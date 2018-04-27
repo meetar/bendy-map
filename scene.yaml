@@ -108,7 +108,7 @@ layers:
         data: { source: mapzen }
         draw:
             roads:
-                order: function() { return feature.sort_rank; }
+                order: function() { return feature.sort_rank || 0; }
                 width: 3px
                 color: '#353535'
 
@@ -116,25 +116,25 @@ layers:
         data: { source: mapzen }
         draw:
             flat:
-                order: function() { return feature.sort_rank; }
+                order: function() { return feature.sort_rank || 0; }
                 color: '#222'
     earth:
         data: { source: mapzen }
         draw:
             flat:
-                order: function() { return feature.sort_rank; }
+                order: function() { return feature.sort_rank || 0; }
                 color: '#222'
     roads:
         data: { source: mapzen }
         filter: { not: { kind_detail: service, kind: rail } }
         draw:
             roads:
-                order: function() { return feature.sort_rank; }
+                order: function() { return feature.sort_rank || 0; }
                 color: [1, .95, .8]
                 width: 15
     buildings:
         data: { source: mapzen }
         draw:
             tilt:
-                order: function() { return feature.sort_rank; }
+                order: function() { return feature.sort_rank || 0; }
                 extrude: true
